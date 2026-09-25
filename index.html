@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oracade — AI that makes health and learning human</title>
+<meta name="description" content="Oracade is an AI research and product company. Our flagship is Fitro: an AI fitness trainer and medical study companion that answers one analogy first, then at full clinical depth.">
+<style>
+/* ============ Tokens (Fitro brand palette, applied to Oracade) ============ */
+:root{
+  --bg:#FAF7F2;            /* Fitro ui.bg  warm paper  */
+  --raised:#FFFDF9;        /* ui.raised                */
+  --ink:#16120F;           /* ui.ink                   */
+  --body:#4A423B;          /* ui.body                  */
+  --muted:#8A8076;         /* ui.muted                 */
+  --hairline:#E5DDD2;      /* ui.hairline              */
+  --divider:#EDE6DB;       /* ui.divider               */
+  --sand:#EFE8DD;          /* ui.sand                  */
+  --accent:#C0603A;        /* ui.accent (terracotta)   */
+  --accentTint:#F5E9DF;    /* ui.accentTint            */
+  --sage:#7A8B6F;          /* colors.sage              */
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --max:76rem;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:inherit;text-decoration:none}
+
+/* ============ Utility ============ */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--sans);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.serif-h{font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+
+/* ============ Nav ============ */
+header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--hairline);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:20px;font-weight:600}
+.logo{width:26px;height:26px;border-radius:8px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--sans);font-size:12px;font-weight:700}
+.nav-links{display:flex;gap:28px;font-size:15px;color:var(--body)}
+.nav-cta{background:var(--ink);color:var(--bg);border:0;padding:10px 18px;border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer}
+.nav-cta:hover{background:#2a2722}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* ============ Hero ============ */
+.hero{padding:96px 24px 72px;text-align:left}
+.hero .eyebrow{margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,58px);line-height:1.12;font-weight:600}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p.sub{font-family:var(--sans);font-size:19px;line-height:1.6;color:var(--body);max-width:56ch;margin:26px 0 10px}
+.hero .actions{margin-top:14px}
+.btn-pill{display:inline-block;background:var(--ink);color:var(--bg);border:0;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-pill:hover{background:#2a2722}
+.btn-ghost{display:inline-block;border:1px solid var(--hairline);color:var(--ink);padding:13px 26px;border-radius:999px;font-family:var(--sans);font-size:16px;cursor:pointer;background:transparent}
+.btn-ghost:hover{background:var(--sand)}
+
+/* ============ Introducing Fitro (splash card) ============ */
+.intro{padding:88px 24px}
+.intro-card{background:var(--raised);border:1px solid var(--hairline);border-radius:24px;padding:56px 48px}
+.intro .eyebrow{margin-bottom:18px}
+.intro h2{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.15;font-weight:600}
+.intro p{font-family:var(--sans);font-size:18px;line-height:1.6;color:var(--body);margin-top:18px;max-width:60ch}
+.intro .fitro-brand{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--sans);font-size:14px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+/* ============ How it answers (decide/learn surface: one idea per section) ============ */
+.how{padding:96px 24px}
+.how .section-head{margin-bottom:10px}
+.how h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,36px);font-weight:600;line-height:1.2}
+.how .lede{font-family:var(--sans);font-size:17px;color:var(--body);max-width:56ch;margin-top:14px}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--divider);border:1px solid var(--hairline);border-radius:20px;overflow:hidden;margin-top:36px}
+.step{background:var(--bg);padding:30px 28px}
+.step .num{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.05em}
+.step h3{font-family:var(--serif);font-size:21px;font-weight:600;margin-top:10px}
+.step p{font-family:var(--sans);font-size:15.5px;line-height:1.55;color:var(--body);margin-top:10px}
+@media(min-width:900px){.steps{grid-template-columns:repeat(4,1fr)}}
+
+/* ============ Two depths / two surfaces ============ */
+.depths{padding:96px 24px;background:var(--sand)}
+.depths .inner{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.depth{background:var(--bg);border:1px solid var(--hairline);border-radius:20px;padding:34px}
+.depth h3{font-family:var(--serif);font-size:24px;font-weight:600}
+.depth .tag{display:inline-block;font-family:var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.depth p{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--body);margin-top:12px}
+@media(max-width:760px){.depths .inner{grid-template-columns:1fr}}
+
+/* ============ One company, many products (the Anthropic->Claude story) ============ */
+.umbrella{padding:96px 24px}
+.umbrella .section-head{max-width:52ch}
+.umbrella h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.2}
+.umbrella p{font-family:var(--sans);font-size:17px;color:var(--body);line-height:1.6;margin-top:16px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.product{background:var(--bg);border:1px solid var(--hairline);border-radius:18px;padding:26px}
+.product .chip{font-family:var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.product h3{font-family:var(--serif);font-size:20px;font-weight:600;margin-top:10px}
+.product p{font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--body);margin-top:10px}
+.product .status{display:inline-block;margin-top:18px;font-size:13px;color:var(--accent)}
+@media(max-width:900px){.products{grid-template-columns:1fr}}
+
+/* ============ Values ============ */
+.values{padding:96px 24px;background:var(--bg)}
+.values h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.2;max-width:20ch}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:40px}
+.value h3{font-family:var(--serif);font-size:19px;font-weight:600}
+.value p{font-family:var(--sans);font-size:15.5px;color:var(--body);line-height:1.55;margin-top:8px}
+@media(min-width:900px){.values-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ============ Footer ============ */
+footer{padding:56px 24px;border-top:1px solid var(--hairline);background:var(--bg)}
+.foot{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.foot h4{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.foot ul{list-style:none;margin-top:12px;font-size:14.5px;color:var(--body)}
+.foot li{margin-bottom:8px}
+.copyright{margin-top:40px;font-family:var(--sans);font-size:13.5px;color:var(--muted)}
+@media(max-width:760px){.foot{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ Motion (subtle, prefer-reduced-motion aware) ============ */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
+.hero h1,.intro h2{animation:fadeUp .7s ease-out both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ Nav ============ -->
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top"><span class="logo">O</span>Oracade</a>
+      <nav class="nav-links">
+        <a href="#fitro">Fitro</a>
+        <a href="#how">How it answers</a>
+        <a href="#company">Company</a>
+        <a href="#values">Values</a>
+      </nav>
+      <a class="nav-cta" href="#fitro">Try Fitro</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">AI research and products · Oracade</p>
+    <h1>Health and learning that <em>finally</em> make sense.</h1>
+    <p class="sub">Oracade builds AI that meets people where they are. Not another wall of
+      definitions — a same-sentence analogy first, so the idea lands, then the depth that
+      turns understanding into mastery. Fitro is our first product.</p>
+    <div class="actions">
+      <a class="btn-pill" href="#fitro">Introducing Fitro</a>
+      <a class="btn-ghost" href="#company">About Oracade</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Introducing Fitro ============ -->
+<section class="intro" id="fitro">
+  <div class="wrap">
+    <div class="intro-card">
+      <p class="eyebrow">Introducing</p>
+      <div class="fitro-brand" style="margin-bottom:6px"><span class="dot"></span>Fitro</div>
+      <h2 style="margin-top:4px">Your AI fitness trainer <br>and medical study companion.</h2>
+      <p>Fitro is an AI-powered trainer built for your body and your syllabus. Ask any concept
+        from your course — Frank–Starling, RAAS, coagulation pathways — and Fitro answers with
+        <strong>one real analogy first</strong>, then rebuilds that same idea at full clinical
+        depth, and ends by asking you something back so you actually retain it. For fitness, it
+        turns your daily movement into a personalized, adaptive coaching plan.</p>
+      <p style="margin-top:14px;color:var(--muted)">Built for MBBS · USMLE · PLAB · NEET-PG, and for anyone who wants to get healthier without the guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ How Fitro answers ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="eyebrow section-head">How every Fitro answer is built</p>
+    <h2>One structure. Every time.</h2>
+    <p class="lede">Not a chatbot that answers differently depending on how you ask. Every
+      concept follows the same four parts, in the same order.</p>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><h3>One real analogy first</h3>
+        <p>An everyday, physical analogy that genuinely matches the mechanism — never forced.</p></div>
+      <div class="step"><span class="num">02</span><h3>Simple explanation</h3>
+        <p>Plain, jargon-free language. A smart student truly understands before memorising.</p></div>
+      <div class="step"><span class="num">03</span><h3>Med-student depth</h3>
+        <p>The same analogy, mapped to real clinical terminology, mechanisms and values — point by point.</p></div>
+      <div class="step"><span class="num">04</span><h3>High-yield + check-in</h3>
+        <p>Two-to-three exam points, one common trap, and a question that tests understanding — not recall.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Two depths ============ -->
+<section class="depths">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:36px">
+      <p class="eyebrow">Two depths, one idea</p>
+      <h2 style="font-family:var(--serif);font-size:clamp(26px,3.4vw,36px);font-weight:600;line-height:1.2">The same analogy, taken further.</h2>
+    </div>
+    <div class="inner">
+      <div class="depth">
+        <span class="tag">Simple</span>
+        <h3>The rubber band</h3>
+        <p>Think of the heart like a rubber band. If you stretch it a bit more before you let
+          go, it snaps back harder. Same with the heart — the more it fills, the stronger the
+          squeeze.</p>
+      </div>
+      <div class="depth">
+        <span class="tag">Med-student</span>
+        <h3>Preload, defined</h3>
+        <p>The stretch before release is <em>preload</em> — end-diastolic volume filling the
+          ventricle. More fill, more stretch, more force out: the Frank–Starling law, stated in
+          the language of the ward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Company umbrella ============ -->
+<section class="umbrella" id="company">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The company</p>
+      <h2>One company. <span style="color:var(--accent)">Many products.</span></h2>
+      <p>Oracade is the laboratory and the parent company. Fitro is our first brand — the way
+        Anthropic is the company and Claude is its product. Under Oracade we are building a
+        family of AI products around health, learning and everyday wellbeing.</p>
+    </div>
+    <div class="products">
+      <div class="product">
+        <span class="chip">Flagship · Health</span>
+        <h3>Fitro</h3>
+        <p>The AI fitness trainer and medical study companion. Analogy-first explanations, adaptive coaching, streak-driven progress.</p>
+        <span class="status">Now live →</span>
+      </div>
+      <div class="product">
+        <span class="chip">Research</span>
+        <h3>Learning Lab</h3>
+        <p>How people actually retain applied knowledge — the insights behind why Fitro answers the way it does.</p>
+        <span class="status">In development</span>
+      </div>
+      <div class="product">
+        <span class="chip">Roadmap</span>
+        <h3>More, soon</h3>
+        <p>Products that carry the same promise: make complex things feel obvious.</p>
+        <span class="status">Coming later</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Values ============ -->
+<section class="values" id="values">
+  <div class="wrap">
+    <p class="eyebrow">What we believe</p>
+    <h2>Clarity before cleverness. Truth before hype.</h2>
+    <div class="values-grid">
+      <div class="value"><h3>Understanding beats memorisation</h3>
+        <p>If you can explain it, you own it. Fitro is built to make you explain it back.</p></div>
+      <div class="value"><h3>Honest, evidence-first</h3>
+        <p>Real mechanisms, real values, real traps — presented plainly, never exaggerated.</p></div>
+      <div class="value"><h3>Health is personal</h3>
+        <p>Nobody trains like you or studies like you. Products should adapt, not assume.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Oracade</h4>
+        <ul><li><a href="#top">Overview</a></li><li><a href="#company">Company</a></li><li><a href="#values">Values</a></li></ul>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul><li><a href="#fitro">Fitro</a></li><li><a href="#how">How it answers</a></li></ul>
+      </div>
+      <div>
+        <h4>Built for</h4>
+        <ul><li>MBBS · USMLE · PLAB · NEET-PG</li><li>Personal fitness</li></ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul><li>Product · fitro.co</li><li>Support</li></ul>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Oracade. AI research and products that make health and learning human.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').innerText = String(new Date().getFullYear());
+</script>
+</body>
+</html>
